@@ -5,6 +5,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
 gem "paperclip", "~> 3.0"
+gem 'omniauth'
 
 group :production do
 	gem 'pg'
