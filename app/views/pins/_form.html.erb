@@ -1,13 +1,43 @@
-<%= simple_form_for(@pin, html: { class: "form-horizontal"}) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :image_file_size, class: "alert alert-error" %>
-  <%= f.full_error :image_content_type, class: "alert alert-error" %>
+<%= form_for @pin, html: { multipart: true } do |f| %>
+  <% if @pin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pin.errors.count, "error") %> prohibited this pin from being saved:</h2>
 
-  <%= f.input :image, label: "Upload an image" %>
-  <%= f.input :image_remote_rule, label: "or Enter a URL" %>
-  <%= f.input :description, as: :text, input_html: { rows: "3" } %>
+      <ul>
+      <% @pin.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
+  <div class="form-group">
+    <%= f.label :image %> - Upload New Photo to Override Image
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :pin_heading %>
+    <%= f.text_field :pin_heading, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+
+    <div class="form-group">
+       <%= f.label :cost %>
+       <%= f.text_field :cost, :as=>:float, class: "form-control", :scale => 2 %>
+
+     </div>
+
+      <div class="form-group">
+       <%= f.label :hours %>
+       <%= f.text_field :hours, class: "form-control" %>
+     </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>

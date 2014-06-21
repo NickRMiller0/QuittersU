@@ -20,4 +20,8 @@ doc/
 .DS_Store
 .idea
 #ignore Paperclip uploaded files
-/public/system
+/public/system/*
+
+#ignore sample images
+# Ignore application configuration
+/config/application.yml

@@ -1,0 +1,28 @@
+<h1>Listing pin_images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Pin Id</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pin_images.each do |pin_image| %>
+      <tr>
+        <td><%= pin_image.description %></td>
+        <td><%= pin_image.pin_id %></td>
+        <td><%= link_to 'Show', pin_image %></td>
+        <td><%= link_to 'Edit', edit_pin_image_path(pin_image) %></td>
+        <td><%= link_to 'Destroy', pin_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pin image', new_pin_image_path %>

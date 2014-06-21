@@ -10,5 +10,8 @@ class User < ActiveRecord::Base
   								:as => [:default, :admin]
   
   has_many :pins, :dependent => :destroy
-
+  has_many :steps, :dependent => :destroy
+  has_many :pin_images, :dependent => :destroy
+  has_many :step_images, :dependent => :destroy
+  
 end

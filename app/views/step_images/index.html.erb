@@ -1,0 +1,27 @@
+<h1>Listing step_images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Step ID</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @step_images.each do |step_image| %>
+      <tr>
+        <td><%= step_image.description %></td>
+        <td><%= step_image.step_id %></td>
+        <td><%= link_to 'Show', step_image %></td>
+        <td><%= link_to 'Edit', edit_step_image_path(step_image) %></td>
+        <td><%= link_to 'Destroy', step_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Step image', new_step_image_path %>

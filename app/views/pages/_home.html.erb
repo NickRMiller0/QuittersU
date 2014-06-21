@@ -1,6 +1,5 @@
-<% unless user_signed_in? %>
-<div class="center hero-unit">
-    <h1>QuittersU, Inc.</h1>
+<div class="jumbotron center">
+   <h1>QuittersU</h1>
    <small>
 		<p>
 		Welcome to 
@@ -8,9 +7,7 @@
 	</p>
 	</small>
 	<h5>	
-		"Share, Try, Create - Don't be a Quitter!" 
+		<p>"What have you Quit lately? ...Share, Try, Create - Don't be a Quitter!" </p>
 	</h5>
     <p> <%= link_to 'Sign up now!', new_user_registration_path, class: "btn btn-large btn-primary" %> </p>
 </div>
-</p>
-<% end %>

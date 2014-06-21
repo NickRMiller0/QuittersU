@@ -1,0 +1,35 @@
+<div id="carousel-step-images" class="carousel slide" data-ride="carousel", data-interval ="false">
+  <!-- Indicators -->
+  <!-- StepImage.where("step_id = ?", Step.where("pin_id = ?", params[:id]).pluck(:id).fetch(i)).count --> 
+ <ol class="carousel-indicators">
+    <% (0..(StepImage.where("pin_id = ? AND step_id =?", params[:id], Step.where("pin_id =?", params[:id]).fetch(step)).count)-1).each do |i| %>
+    <li data-target="#carousel-step-images" data-slide-to= "i"></li>
+    <%end%>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag StepImage.where("pin_id = ? AND step_id =?", params[:id], Step.where("pin_id =?", params[:id]).fetch(step)).first.image %>
+      <div class="carousel-caption">
+        Simple Test
+      </div>
+    </div>
+     <% (1..(StepImage.where("pin_id = ? AND step_id =?", params[:id], Step.where("pin_id =?", params[:id]).fetch(step)).count)-1).each do |j| %>
+    	<div class="item">
+              <%= image_tag StepImage.where("pin_id = ? AND step_id =?", params[:id], Step.where("pin_id =?", params[:id]).fetch(step)).fetch(j).image %>
+	      <div class="carousel-caption">
+	         Step Description
+	      </div>
+	    </div>
+	  <%end%>  
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-step-images" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-step-images" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>

@@ -1,12 +1,30 @@
 QuittersU::Application.routes.draw do
-  resources :pins
 
+  resources :pin_images
+
+  resources :step_images
+
+  resources :steps
+
+
+  resources :groups
+
+  devise_for :store_admins
+
+  resources :stores
+  resources :pins 
 
   devise_for :users
 
-  get 'about' => 'pins#about'
-
+  get 'about' => 'pages#about'
+  get 'test' => 'pages#test'
+  get 'groups' => 'groups#index'
     root :to => 'pins#index'
+
+  #Google API Session Routing Information.
+  get '/login', to: 'sessions#new', as: 'login'
+  get '/oauth2callback', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

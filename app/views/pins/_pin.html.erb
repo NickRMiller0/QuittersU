@@ -1,17 +1,35 @@
-<div class="box">
-    <%= link_to (image_tag pin.image(:medium)), pin %>
-    <p class="description">
-        <%= pin.description %>
-    </p>
-    <p>
-        <strong>
-            Posted by <%= pin.user.name %>
-        </strong>
-    </p>
-    <% if current_user == pin.user %>
-        <p>
-          <%= link_to 'Edit', edit_pin_path(pin) %>
-          <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </p>
-    <% end %>
+<div id="carousel-pins" class="carousel slide" data-ride="carousel", data-interval ="false">
+  <!-- Indicators -->
+ <ol class="carousel-indicators">
+    <li data-target="#carousel-pins" data-slide-to="0" class="active"></li>
+    <% (0..(PinImage.where("pin_id = ?", params[:id]).count)-1).each do |i| %>
+    <li data-target="#carousel-pins" data-slide-to= "i"></li>
+    <%end%>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div id="carousel-show-pins" class="carousel-inner">
+    <div class="item active">
+      <%= image_tag @pin.image %>
+      <div class="carousel-caption">
+        <%= @pin.pin_heading %> 
+      </div>
+    </div>
+    <% (0..(PinImage.where("pin_id = ?", params[:id]).count)-1).each do |i| %>
+    	<div class="item">
+              <%= image_tag PinImage.find(PinImage.where("pin_id = ?", params[:id]).pluck(:id).fetch(i)).image %>
+	      <div class="carousel-caption">
+	         <%= PinImage.where("pin_id = ?", params[:id]).pluck(:description).fetch(i) %>
+	      </div>
+	    </div>
+	  <% end %>  
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-pins" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-pins" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
 </div>

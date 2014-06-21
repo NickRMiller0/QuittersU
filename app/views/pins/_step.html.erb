@@ -1,0 +1,53 @@
+<div class="col-md-6">  <!--Right View Pane for Steps-->
+      <% (0..(Step.where("pin_id = ?", params[:id]).count)-1).each do |step| %>
+          <div class="col-md-12">
+              <div class="step well" id="accordion"> <!-- Well for Each Step associated with a Pin-->
+                  <ul class="nav pull-right">
+                    <% if current_user == @pin.user %> <!-- Add Edit Features if User signed in-->
+                            <%= link_to edit_step_path((Step.where("pin_id = ?", params[:id]).fetch(step)), :pin_id => @pin.id) do %>
+                          <span class="glyphicon glyphicon-edit"></span>
+                              Edit
+                          <% end %> |
+                     <%= link_to Step.where("pin_id = ?", params[:id]).fetch(step), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                          <span class="glyphicon glyphicon-trash"></span>
+                          Delete
+                        <% end %> |
+                         <%= link_to new_step_image_path(:step_id => Step.where("pin_id = ?", params[:id]).fetch(step), :pin_id => @pin.id) do %>
+                                  Add
+                          <span class="glyphicon glyphicon-picture"></span> | 
+                          <% end %> 
+                    <% end %> 
+                    <% if StepImage.where("step_id = ?", Step.where("pin_id = ?", params[:id]).pluck(:id).fetch(step)).count == 0 %> 
+                    
+                    <% else %>
+                    <a href="#StepImageModal" data-toggle="modal"> 
+                  <span class="glyphicon glyphicon-picture"></span> (<%= StepImage.where("step_id = ?", Step.where("pin_id = ?", params[:id]).pluck(:id).fetch(step)).count %> ) </strong>
+                   </a>  
+                     <div class="modal fade" id="StepImageModal">  <!-- Step Image Modal - Not Currently Working Properly-->
+                            <div class="modal-header">
+                              <a class="close" data-dismiss="modal">&times;</a>
+                              <h3>Modal Header</h3>
+                            </div>
+                            <div class="modal-body">
+                                <%= render :partial => 'pins/step_images', :locals => { :step => step } %>
+                            </div>
+                            <div class="modal-footer">
+                              <a href="#" class="btn" data-dismiss="modal">Close</a>
+                            </div>
+                      </div>     
+                    <% end %>
+                  </ul>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                  <strong> Step <%= step+1 %> - <%=Step.where("pin_id = ?", params[:id]).pluck(:step_title).fetch(step) %> </strong>   
+                  </a>
+                  <p>
+                    <hr class="divider">  <!-- Divider between Toggle of Steps-->
+                  <div id="collapseOne" class="step well-collapse collapse in">
+                      <%= Step.where("pin_id = ?", params[:id]).pluck(:description).fetch(step) %>
+                   </div> 
+                  </p>
+              </div>  <!-- Well Divider --> 
+            </div>   
+      <%end %>
+    </div>
+ 

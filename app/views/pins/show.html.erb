@@ -1,19 +1,71 @@
-<div class="row">
-    <div class="span6 offset0">
+
+<div class="container">
+    <div class="row">
+      <div class="show-pin-heading col-md-12">
         <div class="well">
-            <p>
-              <%= image_tag @pin.image %>
-            </p>
-            <p>
-              <%= @pin.description %>
-            </p>
-            <p>
-              <%= @pin.user.name %>
-            </p>
-            <% if current_user == @pin.user %>
-                <%= link_to 'Edit', edit_pin_path(@pin) %> |
+              This is a place for the store GIF and then other images of the user. 
+              <%= Pin.where("user_id = ?", @pin.user_id).count %> Pins
+        </div>  
+      </div> 
+    </div>  <!-- Top Line Row --> 
+
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="pin-carousel panel-heading">
+              
+          <%= render 'pins/pin' %>
+              
+          <div class="row"> 
+             <div class="col-sm-4">   
+              
+            <a class="just-quit btn btn-primary btn-sm" role="button">
+                <div class="row"><strong> Just Quit! </strong></div>
+                <div class="row"><strong> <%= "$" %> <%= @pin.cost %> <%= "(USD)" %></strong></div>
+            </a>
+              </div>
+              
+              <div class="col-sm-4"> 
+                <%= @pin.user.name %>
+              </div>       
+             <div class="col-sm-4">   
+              <% if current_user == @pin.user %>
+                <%= link_to new_pin_image_path(:pin_id => @pin.id) do %>
+                Add
+                <span class="glyphicon glyphicon-picture"></span>
+                <% end %> |
+                <%= link_to "Add Step+", new_step_path(:pin_id => @pin.id) %>
+                <% else %>  
+                <%="Like" %>
+                <% end %>           
+              </div>
+            </div>  <!-- First Row Under Pin Carousel!!-->
+            
+        <div class="row">        
+          <% if @pin.user == current_user %>
+                <%= link_to edit_pin_path(@pin) do %>
+            <span class="glyphicon glyphicon-edit"></span>
+                Edit
             <% end %>
-            <%= link_to 'Back', pins_path %>
-        </div>
-    </div>
-</div>
+                |
+                 <%= link_to @pin, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+                Delete
+            <% end %> 
+                |
+                <%= link_to 'Back', pins_path %>
+            <%else %>
+             <%="Buy It Now!" %>
+          <% end %>
+         </div> <!--pin-carousel panel-heading --> 
+        </div>  <!--Edit Pin Div Row-->
+      </div>   <!-- Pin Panel -->   
+    
+    <div class="pin-project-description well"> 
+      <p><strong> Project Description </Strong> </p>
+      <%= @pin.description %>
+    </div>  <!--Project Description Well-->
+   </div>  <!-- Left Column Md-6 -->  
+  <%= render 'pins/step' %>
+
+</div>      <!-- Container DIV --> 

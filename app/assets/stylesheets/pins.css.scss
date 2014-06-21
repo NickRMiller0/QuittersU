@@ -1,0 +1,86 @@
+// Place all the styles related to the pins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#pins {
+	margin: 0 auto;
+}
+
+.box {
+    margin: 5px;
+    padding: 5px;
+    font-family: 'Lato';
+    font-size: 14px;
+    line-height: 1.4em;
+    float: left;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #444;
+    width: 214px;
+		border: 2px solid white;
+}
+
+.box img {
+	width: 100%;
+}
+
+/* Box Heading Text on Index Page */
+
+.box h3 {
+    font-family: 'Lato';
+    font-size: 14px;
+    font-weight: bolder;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 2px;
+    text-align: center;
+}
+
+/* Box Rows to align Text and Main Elements on Index Page */
+
+.box .row {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+/*-- This is consistent HTML5 layout on the Pin Page --*/
+/* Step Styling for Dynamic Steps on _step.html.erb page */
+/* Pin Carousel for Dynamic Steps on _pin.html.erb page */
+
+.pin-carousel.panel-heading, .pin-project-description.well, .step.well,
+.show-pin-heading.col-md-12 .well   {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 1px 1px 10px #444;
+    border: 2px solid gray;
+}
+
+.pin-carousel.panel-heading .row {
+    padding-left: 14px;
+}
+
+.show-pin-heading.col-md-12 {
+    padding-top: 15px;
+}
+
+.show-pin-heading.col-md-12 .well {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 28px;
+    margin-left: 14px;
+}
+
+.just-quit.btn.btn-primary.btn-sm {
+    margin: 5px;
+    background-color: #2980b9;
+    width: 100px;
+    text-align: center;
+}
+
+.just-quit.btn.btn-primary.btn-sm .row {
+    padding-left: 0px;
+    margin-left: -15px;
+    }
+
+/*-- END OF PIN PAGE CSS ---*/
