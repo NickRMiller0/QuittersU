@@ -25,5 +25,6 @@ module QuittersU
 
     # Required for Heroku
     config.assets.initialize_on_precompile = false
+    config.assets.debug = true
   end
 end
