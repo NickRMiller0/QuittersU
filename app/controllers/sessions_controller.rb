@@ -33,6 +33,7 @@ class SessionsController < ApplicationController
       end
     # Redirect home
     redirect_to session[:redirect_to] ||= root_path    
+    end
   end
 
   def destroy
