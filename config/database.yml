@@ -20,6 +20,11 @@ test:
 
 production:
   adapter:  postgresql
-  database: Quitters_db_prod
+  database: dsmkeoe8i8m2t
   pool: 5
   timeout: 5000
+  username: kmyvftzxglwyvn
+  password: dHWQQ9QGAUUrDpz0sidwbbyzr1
+  port: 5432
+  host: ec2-54-197-250-40.compute-1.amazonaws.com
+
