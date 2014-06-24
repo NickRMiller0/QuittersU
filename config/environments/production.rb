@@ -67,8 +67,19 @@ QuittersU::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-
+  config.action_mailer.default_url_options = { :host => 'quittersu.herokuapp.com' }
+ActionMailer::Base.smtp_settings = {
+  :user_name => ENV["SENDGRID_USERNAME"],
+  :password => ENV["SENDGRID_PASSWORD"],
+  :domain => "QuittersU.com",
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
   #In production, :host should be set to the actual host of your application.
-
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default :charset => "utf-8"
+end
 end
