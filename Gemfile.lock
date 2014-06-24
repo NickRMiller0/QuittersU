@@ -27,6 +27,8 @@ GEM
       activesupport (= 4.0.4)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
+    activerecord-postgresql-adapter (0.0.1)
+      pg
     activerecord-session_store (0.0.1)
       actionpack (>= 4.0.0.beta, < 5)
       activerecord (>= 4.0.0.beta, < 5)
@@ -197,6 +199,7 @@ DEPENDENCIES
   actionpack-xml_parser (~> 1.0.0)
   actionview-encoded_mail_to (~> 1.0.4)
   activemodel (~> 4.0.0)
+  activerecord-postgresql-adapter
   activerecord-session_store (~> 0.0.1)
   activeresource (~> 4.0.0.beta1)
   acts_as_commentable_with_threading

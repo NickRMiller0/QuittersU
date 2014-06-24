@@ -43,6 +43,7 @@ gem 'protected_attributes', '~>1.0.1'
 group :production do
 	gem 'pg'
   gem 'rails_12factor'
+  gem "activerecord-postgresql-adapter"
 end
 
 group :development, :test do
