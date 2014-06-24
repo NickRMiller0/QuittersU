@@ -20,7 +20,6 @@ class SessionsController < ApplicationController
         user = User.create(:email => user_info['email'],
      :first_name => user_info['given_name'], :last_name => user_info['family_name'], :role => 'User', :uid => user_info['id'], :refresh_token => user_tokens['refresh_token'], :access_token => user_tokens['access_token'], :expires => user_tokens['expires_in'])
         session[:user_id] = user.id
-      end
 
       # Else update their info and save
       else
