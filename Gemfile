@@ -38,17 +38,14 @@ gem 'activeresource', '~>4.0.0.beta1'
 gem 'rails-observers', '~>0.1.1'
 gem 'rails-perftest', '~>0.0.2'
 gem 'protected_attributes', '~>1.0.1'
-
+gem 'pg'
 
 group :production do
-	gem 'pg'
   gem 'rails_12factor'
   gem "activerecord-postgresql-adapter"
+  gem 'thin'
 end
 
-group :development, :test do
-	gem 'sqlite3'
-end 
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

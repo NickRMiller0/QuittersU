@@ -1,27 +1,28 @@
 <div class="col-md-6">  <!--Right View Pane for Steps-->
+    <!-- Try declaring local constant <% @Step_count = Step.where("pin_id = ?", params[:id]).count - 1%>  --> 
       <% (0..(Step.where("pin_id = ?", params[:id]).count)-1).each do |step| %>
           <div class="col-md-12">
               <div class="step well" id="accordion"> <!-- Well for Each Step associated with a Pin-->
                   <ul class="nav pull-right">
                     <% if current_user == @pin.user %> <!-- Add Edit Features if User signed in-->
-                            <%= link_to edit_step_path((Step.where("pin_id = ?", params[:id]).fetch(step)), :pin_id => @pin.id) do %>
+                            <%= link_to edit_step_path((Step.where("pin_id = ?", params[:id]).fetch(Step.where("pin_id = ?", params[:id]).count-1-step)), :pin_id => @pin.id) do %>
                           <span class="glyphicon glyphicon-edit"></span>
                               Edit
                           <% end %> |
-                     <%= link_to Step.where("pin_id = ?", params[:id]).fetch(step), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                     <%= link_to Step.where("pin_id = ?", params[:id]).fetch(Step.where("pin_id = ?", params[:id]).count-1-step), method: :delete, data: { confirm: 'Are you sure?' } do %>
                           <span class="glyphicon glyphicon-trash"></span>
                           Delete
                         <% end %> |
-                         <%= link_to new_step_image_path(:step_id => Step.where("pin_id = ?", params[:id]).fetch(step), :pin_id => @pin.id) do %>
+                         <%= link_to new_step_image_path(:step_id => Step.where("pin_id = ?", params[:id]).fetch(Step.where("pin_id = ?", params[:id]).count-1-step), :pin_id => @pin.id) do %>
                                   Add
                           <span class="glyphicon glyphicon-picture"></span> | 
                           <% end %> 
                     <% end %> 
-                    <% if StepImage.where("step_id = ?", Step.where("pin_id = ?", params[:id]).pluck(:id).fetch(step)).count == 0 %> 
+                    <% if StepImage.where("step_id = ?", Step.where("pin_id = ?", params[:id]).pluck(:id).fetch(Step.where("pin_id = ?", params[:id]).count-1-step)).count == 0 %> 
                     
                     <% else %>
                     <a href="#StepImageModal" data-toggle="modal"> 
-                  <span class="glyphicon glyphicon-picture"></span> (<%= StepImage.where("step_id = ?", Step.where("pin_id = ?", params[:id]).pluck(:id).fetch(step)).count %> ) </strong>
+                  <span class="glyphicon glyphicon-picture"></span> (<%= StepImage.where("step_id = ?", Step.where("pin_id = ?", params[:id]).pluck(:id).fetch(Step.where("pin_id = ?", params[:id]).count-1-step)).count %> ) </strong>
                    </a>  
                      <div class="modal fade" id="StepImageModal">  <!-- Step Image Modal - Not Currently Working Properly-->
                             <div class="modal-header">
@@ -38,12 +39,12 @@
                     <% end %>
                   </ul>
                   <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                  <strong> Step <%= step+1 %> - <%=Step.where("pin_id = ?", params[:id]).pluck(:step_title).fetch(step) %> </strong>   
+                  <strong> Step <%= step+1 %> - <%=Step.where("pin_id = ?", params[:id]).pluck(:step_title).fetch(Step.where("pin_id = ?", params[:id]).count-1-step) %> </strong>   
                   </a>
                   <p>
                     <hr class="divider">  <!-- Divider between Toggle of Steps-->
                   <div id="collapseOne" class="step well-collapse collapse in">
-                      <%= Step.where("pin_id = ?", params[:id]).pluck(:description).fetch(step) %>
+                      <%= Step.where("pin_id = ?", params[:id]).pluck(:description).fetch(Step.where("pin_id = ?", params[:id]).count-1-step) %>
                    </div> 
                   </p>
               </div>  <!-- Well Divider --> 
