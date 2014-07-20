@@ -22,7 +22,7 @@ test:
 
 production:
   adapter:  postgresql
-  database: dft8hnlmip8991
+  database: HEROKU_POSTGRESQL_RED_URL
   pool: 5
   timeout: 5000
   username: mcmwfkccuodvda
