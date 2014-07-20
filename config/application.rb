@@ -1,9 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require 'uri'
-require 'net/http'
-require 'net/https'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -25,6 +22,5 @@ module QuittersU
 
     # Required for Heroku
     config.assets.initialize_on_precompile = false
-    config.assets.debug = true
   end
 end
