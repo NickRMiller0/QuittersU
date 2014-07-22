@@ -26,7 +26,6 @@ gem 'bootstrap-sass', '~>3.0.3.0'
 gem 'sass-rails',   '~> 4.0.2'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'acts_as_commentable_with_threading'
 
 #Added to Migrate to Rails4
 gem 'actionpack-action_caching', '~>1.0.0'
