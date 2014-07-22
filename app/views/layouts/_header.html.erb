@@ -16,7 +16,6 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "About", about_path %></li>
-        <li><%= link_to "Test", test_path %></li>  <!-- added to test collapsing -->
         <% if user_signed_in? %>
           <li>
             <%= link_to new_pin_path do %>
