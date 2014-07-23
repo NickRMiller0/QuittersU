@@ -14,7 +14,7 @@ QuittersU::Application.routes.draw do
   resources :stores
   resources :pins 
 
-  devise_for :users
+  devise_for :users, :controllers => { omniauth_callbacks: 'onmiauth_callbacks'}
 
   get 'about' => 'pages#about'
   get 'test' => 'pages#test'
@@ -36,6 +36,8 @@ QuittersU::Application.routes.draw do
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
+
+ match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
