@@ -34,5 +34,3 @@ class UsersController < ApplicationController
       params.require(:user).permit(accessible)
     end
 end
-
-end
