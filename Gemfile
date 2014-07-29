@@ -45,6 +45,7 @@ group :production do
   gem 'rails_12factor'
   gem "activerecord-postgresql-adapter"
   gem 'thin'
+  gem 'aws-sdk'
 end
 
 
