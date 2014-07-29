@@ -79,10 +79,10 @@ config.paperclip_defaults = {
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.default_url_options = { :host => 'quittersu.herokuapp.com' }
-ActionMailer::Base.smtp_settings = {
+  ActionMailer::Base.smtp_settings = {
   :user_name => ENV["SENDGRID_USERNAME"],
   :password => ENV["SENDGRID_PASSWORD"],
-  :domain => "QuittersU.com",
+  :domain => "heroku.com",
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain,
